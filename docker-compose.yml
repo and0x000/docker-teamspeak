@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  app:
+    image: teamspeak
+    restart: always
+    ports:
+      - 10011:10011
+      - 30033:30033
+      - 41144:41144
+      - 9987:9987/udp
+    volumes:
+      - /var/ts3server:/var/ts3server
+    environment:
+      - TS3SERVER_LICENSE=accept
+      - TS3SERVER_DB_PLUGIN=ts3db_sqlite3
+    network_mode: "bridge"
